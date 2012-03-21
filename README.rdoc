@@ -1,0 +1,46 @@
+= ch2rv
+
+２ちゃんねるのdat形式ファイルとsubject.txtから{ReVIEW}[https://github.com/kmuto/review]（のEPUB）用のデータを生成します。
+
+
+== 生成に必要なファイル
+
+以下をディレクトリにまとめて入れてください。共にSJISであることを前提にしています。
+
+* 2ちゃんねるのdat形式ファイル（複数可）
+* subject.txtファイル
+
+subject.txtに記述されているdatファイルが存在する場合だけ変換しますので、datの数とsubject.txtの行数が揃ってなくても問題なしです。ただし、subject.txtに記述されてないdatは変換されません。
+なお、subject.txtの記述順に目次が生成されますので、適宜入れ替える等調整してください。
+
+
+== Commands
+
+引数にデータを入れたディレクトリ名を指定します。
+
+  ruby ch2rv.rb [directory]
+
+
+== ReVIEW用に生成されるファイル
+
+指定したディレクトリに rv というディレクトリを作成し、以下を生成します。
+
+* .re形式のファイル（1datファイルが1reファイルになります）
+* CHAPS
+* PART
+* スタイルシート（ch2rv.css）
+* config.yaml (review-epubmaker向けの設定ファイル)
+
+生成されたディレクトリに移動し「review-epubmaker config.yaml」してください。
+config.yamlはそのままでも使えると思いますが、タイトル等個別に調整できますのでEPUB生成前に見直すのが吉です。
+
+
+== License
+
+ReVIEWに倣いLGPLで。
+LGPL. See COPYING file.
+
+
+== Copyright
+
+Copyright (c) 2012 Shunsuke Ito
