@@ -1,43 +1,45 @@
 = ch2rv
 
-�Q�����˂��dat�`���t�@�C����subject.txt����{ReVIEW}[https://github.com/kmuto/review]�i��EPUB�j�p�̃f�[�^�𐶐����܂��B
+２ちゃんねるのdat形式ファイルとsubject.txtからReVIEW（のEPUB）用のデータを生成します。
+
+* {ReVIEW}[https://github.com/kmuto/review]
 
 
-== �����ɕK�v�ȃt�@�C��
+== 生成に必要なファイル
 
-�ȉ����f�B���N�g���ɂ܂Ƃ߂ē���Ă��������B����SJIS�ł��邱�Ƃ�O��ɂ��Ă��܂��B
+以下をディレクトリにまとめて入れてください。共にSJISであることを前提にしています。
 
-* 2�����˂��dat�`���t�@�C���i�����j
-* subject.txt�t�@�C��
+* 2ちゃんねるのdat形式ファイル（複数可）
+* subject.txtファイル
 
-subject.txt�ɋL�q����Ă���dat�t�@�C�������݂���ꍇ�����ϊ����܂��̂ŁAdat�̐���subject.txt�̍s���������ĂȂ��Ă����Ȃ��ł��B�������Asubject.txt�ɋL�q����ĂȂ�dat�͕ϊ�����܂���B
-�Ȃ��Asubject.txt�̋L�q���ɖڎ�����������܂��̂ŁA�K�X����ւ��铙�������Ă��������B
+subject.txtに記述されているdatファイルが存在する場合だけ変換しますので、datの数とsubject.txtの行数が揃ってなくても問題なしです。ただし、subject.txtに記述されてないdatは変換されません。
+なお、subject.txtの記述順に目次が生成されますので、適宜入れ替える等調整してください。
 
 
 == Commands
 
-�����Ƀf�[�^����ꂽ�f�B���N�g�������w�肵�܂��B
+引数にデータを入れたディレクトリ名を指定します。
 
   ruby ch2rv.rb [directory]
 
 
-== ReVIEW�p�ɐ��������t�@�C��
+== ReVIEW用に生成されるファイル
 
-�w�肵���f�B���N�g���� rv �Ƃ����f�B���N�g�����쐬���A�ȉ��𐶐����܂��B
+指定したディレクトリに rv というディレクトリを作成し、以下を生成します。
 
-* .re�`���̃t�@�C���i1dat�t�@�C����1re�t�@�C���ɂȂ�܂��j
+* .re形式のファイル（1datファイルが1reファイルになります）
 * CHAPS
 * PART
-* �X�^�C���V�[�g�ich2rv.css�j
-* config.yaml (review-epubmaker�����̐ݒ�t�@�C��)
+* スタイルシート（ch2rv.css）
+* config.yaml (review-epubmaker向けの設定ファイル)
 
-�������ꂽ�f�B���N�g���Ɉړ����ureview-epubmaker config.yaml�v���Ă��������B
-config.yaml�͂��̂܂܂ł��g����Ǝv���܂����A�^�C�g�����ʂɒ����ł��܂��̂�EPUB�����O�Ɍ������̂��g�ł��B
+生成されたディレクトリに移動し「review-epubmaker config.yaml」してください。
+config.yamlはそのままでも使えると思いますが、タイトル等個別に調整できますのでEPUB生成前に見直すのが吉です。
 
 
 == License
 
-ReVIEW�ɕ킢LGPL�ŁB
+ReVIEWに倣いLGPLで。
 LGPL. See COPYING file.
 
 
