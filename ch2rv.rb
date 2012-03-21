@@ -10,6 +10,7 @@
 require 'cgi'
 require 'uri'
 require 'FileUtils'
+require 'kconv'
 
 def url2link_of_string(html_string,options={})
     str = html_string.dup
@@ -64,12 +65,12 @@ unless ARGV[0].nil? then
                 part << title << "\n"
                 
                 # read *.dat file
-                f = open(datFile, "r:windows-31j:utf-8")
-                dat = f.readlines();
+                f = open(datFile, "r:windows-31j")
+                dat = f.readlines()
                 f.close
                 
                 dat.each{|line|
-                    kakiko = line.split("<>")
+                    kakiko = line.kconv(Kconv::UTF8, Kconv::SJIS).split("<>")
                     body = make_reBody(kakiko[3])
                     reData << %Q(: #{ln.to_s} @<raw>{|html|名前: <b>#{kakiko[0]}</b> : )
                     reData << %Q(<span class="date">#{kakiko[2]}</span> }\n)
